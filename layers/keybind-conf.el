@@ -51,6 +51,6 @@ Source: http://stackoverflow.com/questions/9688748/emacs-comment-uncomment-curre
   "Reload init"
   (interactive)
   (load-file "~/.emacs.d/init.el"))
-(evil-leader/set-key-for-mode 'emacs-lisp-mode "ti" 'load-init-config)
+(evil-leader/set-key 'emacs-lisp-mode "ti" 'load-init-config)
 (provide 'keybind-conf)
 ;;; keybind-conf ends here

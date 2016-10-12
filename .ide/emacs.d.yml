@@ -1,0 +1,8 @@
+name: emacsd
+root: /home/user/src/emacs.d
+pre: emacs --eval "(setq server-name \"emacsd\")" --daemon || true
+startup_window: editor
+windows:
+  - none: ''
+  - editor: emacsclient -s emacsd ./
+  - zsh: ''

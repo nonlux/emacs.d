@@ -16,9 +16,10 @@
 
 ;; quelpa
 (defun nlx-quelpa-install()
-(if (require 'quelpa nil t)
+  (package-refresh-contents)
+  (if (require 'quelpa nil t)
     (quelpa-self-upgrade)
-(with-temp-buffer
+  (with-temp-buffer
     (url-insert-file-contents "https://raw.github.com/quelpa/quelpa/master/bootstrap.el")
     (eval-buffer))))
 
@@ -41,6 +42,7 @@
     js2-mode
     dockerfile-mode
     yaml-mode
+    markdown-mode
     ;; grizzl
     ;; projectile
     ;; perspective
@@ -55,7 +57,6 @@
 
 (defun autoinstall-packages ()
   "Install packages from config:package variable."
-  (package-refresh-contents)
   (dolist (p config:packages)
      (quelpa  p)
      (require p)))

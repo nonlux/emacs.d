@@ -58,11 +58,15 @@
 (defun autoinstall-packages ()
   "Install packages from config:package variable."
   (dolist (p config:packages)
-     (quelpa  p)
-     (require p)))
+     (quelpa  p)))
 
+(defun autorequire ()
+  "Install packages from config:package variable."
+  (dolist (p config:packages)
+     (require p)))
 ;(nlx-quelpa-install)
 ;; (autoinstall-packages)
+(autorequire)
 
 
 
@@ -88,5 +92,12 @@
   (interactive)
   (message "%s" major-mode))
 
+;; modes
+(require 'js2-mode)
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(custom-set-variables
+ '(js2-basic-offset 2)
+ '(js2-bounce-indent-p t)
+)
 ;;; init.el ends here
 

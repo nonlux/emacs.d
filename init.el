@@ -22,6 +22,7 @@
   (with-temp-buffer
     (url-insert-file-contents "https://raw.github.com/quelpa/quelpa/master/bootstrap.el")
     (eval-buffer))))
+;(nlx-quelpa-install)
 
 (require 'quelpa)
 (defvar config:packages)
@@ -64,11 +65,8 @@
   "Install packages from config:package variable."
   (dolist (p config:packages)
      (require p)))
-;(nlx-quelpa-install)
-;; (autoinstall-packages)
-(autorequire)
-
-
+(autoinstall-packages)
+;(autorequire)
 
 (require 'core-conf)
 (require 'evil-conf)
@@ -96,8 +94,20 @@
 (require 'js2-mode)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (custom-set-variables
- '(js2-basic-offset 2)
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(js-indent-level 2)
  '(js2-bounce-indent-p t)
-)
+ '(package-selected-packages
+   (quote
+    (auto-yasnippet yasnippet markdown-mode yaml-mode dockerfile-mode js2-mode json-mode json-snatcher json-reformat auto-complete popup flycheck pkg-info epl blank-mode git-gutter evil-magit magit magit-popup git-commit with-editor dash async linum-relative color-theme-solarized evil-leader quelpa))))
 ;;; init.el ends here
 
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

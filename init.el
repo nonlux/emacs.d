@@ -13,7 +13,7 @@
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 (package-initialize)
-
+(setq allowInstall (getenv "EMACS_INSTALL"))
 ;; quelpa
 (defun nlx-quelpa-install()
   (package-refresh-contents)
@@ -22,7 +22,7 @@
   (with-temp-buffer
     (url-insert-file-contents "https://raw.github.com/quelpa/quelpa/master/bootstrap.el")
     (eval-buffer))))
-;(nlx-quelpa-install)
+(if allowInstall (nlx-quelpa-install))
 
 (require 'quelpa)
 (defvar config:packages)
@@ -65,8 +65,8 @@
   "Install packages from config:package variable."
   (dolist (p config:packages)
      (require p)))
-(autoinstall-packages)
-;(autorequire)
+
+(if allowInstall (autoinstall-packages) (autorequire))
 
 (require 'core-conf)
 (require 'evil-conf)

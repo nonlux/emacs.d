@@ -1,5 +1,11 @@
 *~
+*\#*
 \#*
+*.log
+*.pyc
+*.swp
+/tmp/*
+
 quelpa/*
 elpa/*
 old/*

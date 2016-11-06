@@ -72,6 +72,12 @@ Source: http://stackoverflow.com/questions/9688748/emacs-comment-uncomment-curre
   "tt" 'prompt-window
 )
 
+
+(defun gar() "" (interactive) (shell-command "yo prj:ansibleRole"))
+(evil-leader/set-key
+  "gar" 'gar
+)
+
 (defun load-init-config()
   "Reload init"
   (interactive)

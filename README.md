@@ -1,3 +1,3 @@
 # emacs.d
 
-My emacs config
+my emacs confog

@@ -1,0 +1,12 @@
+{
+  "generator-prj": {
+    "projectName": "emacs.d",
+    "isGithub": true,
+    "description": "my emacs confog",
+    "projectType": "shell",
+    "shortName": "emacsd",
+    "isBabel": false,
+    "isEslint": false,
+    "isWebpack": false
+  }
+}

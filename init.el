@@ -72,6 +72,7 @@
      (require p)))
 
 (if allowInstall (autoinstall-packages) (autorequire))
+(if allowInstall (kill-emacs))
 
 (require 'core-conf)
 (require 'evil-conf)

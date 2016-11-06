@@ -27,29 +27,34 @@
 (require 'quelpa)
 (defvar config:packages)
 (setq  config:packages '(
+    ; evil
     evil
     evil-leader
+    ; gui
     color-theme
     color-theme-solarized
     linum-relative
+    ; git
     magit
     evil-magit
     git-gutter
-    blank-mode
+    ; dev tools
     flycheck
     auto-complete
+    yasnippet
+    auto-yasnippet
+    
+    grizzl ; projectile deps
+    projectile
     ;filetypes packages:
+    blank-mode
     json-mode
     js2-mode
     dockerfile-mode
     yaml-mode
     markdown-mode
-    ;; grizzl
-    ;; projectile
     ;; perspective
     ;; persp-projectile
-    yasnippet
-    auto-yasnippet
     ;; ;; file type
     ;; json-reformat
     ;; json-snatcher
@@ -75,8 +80,8 @@
 
 ;for refactoring
 ;ac
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/dict")
 (require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/dict")
 (ac-config-default)
 ;yasnipets
 (add-to-list 'load-path
@@ -89,7 +94,12 @@
   "Show major modes."
   (interactive)
   (message "%s" major-mode))
-
+;;
+(require 'projectile)
+(setq projectile-indexing-method 'native)
+(setq projectile-enable-caching t)
+(setq projectile-completion-system 'grizzl)
+(projectile-discover-projects-in-directory "~/src")
 ;; modes
 (require 'js2-mode)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))

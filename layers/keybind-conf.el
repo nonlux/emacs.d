@@ -18,8 +18,8 @@
 )
 ;;linimun
 (evil-leader/set-key
-  "tll" 'linum-mode
-  "tlr" 'linum-relative-toggle
+  "ll" 'linum-mode
+  "lr" 'linum-relative-toggle
 )
 
 ;;magit
@@ -46,6 +46,31 @@ Source: http://stackoverflow.com/questions/9688748/emacs-comment-uncomment-curre
 
 ;;elisp
 (evil-leader/set-key-for-mode 'emacs-lisp-mode "mm" 'eval-buffer)
+
+;;projectile
+(evil-leader/set-key
+  "pp" 'projectile-mode
+  "pd" 'projectile-dired
+  "pf" 'projectile-find-file
+)
+;; tmux
+(defun prompt-tmx()
+  "switch to other tmx project"
+  (interactive)
+  (let ((x (read-string "Enter project name:")))
+    (shell-command (format "tmuxinator  %s" x)))
+)
+(defun prompt-window()
+  "switch to other tmx project"
+  (interactive)
+  (let ((x (read-string "Enter window:")))
+    (shell-command (format "tmux select-window -t :=%s" x)))
+)
+
+(evil-leader/set-key
+  "tp" 'prompt-tmx
+  "tt" 'prompt-window
+)
 
 (defun load-init-config()
   "Reload init"

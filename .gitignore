@@ -4,3 +4,5 @@ quelpa/*
 elpa/*
 old/*
 *.dat
+projectile-bookmarks.eld
+projectile.cache

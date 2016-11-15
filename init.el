@@ -41,24 +41,31 @@
     ; dev tools
     flycheck
     auto-complete
+    ac-js2
     yasnippet
     auto-yasnippet
     
     grizzl ; projectile deps
     projectile
+    ag
     ;filetypes packages:
     blank-mode
     json-mode
     js2-mode
+    js2-refactor
+    web-mode
     dockerfile-mode
     yaml-mode
     markdown-mode
+    less-css-mode
+    skewer-mode
+    scss-mode
+    sass-mode
     ;; perspective
     ;; persp-projectile
     ;; ;; file type
     ;; json-reformat
     ;; json-snatcher
-    ;; js2-refactor
 ))
 
 (defun autoinstall-packages ()
@@ -84,11 +91,21 @@
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/dict")
 (ac-config-default)
+(setq-default ac-sources '(
+                           ac-source-yasnippet
+                           ac-source-abbrev
+                           ac-source-dictionary
+                           ac-source-words-in-same-mode-buffers
+                           ))
 ;yasnipets
-(add-to-list 'load-path
-             "~/.emacs.d/plugins/yasnippet")
 (require 'yasnippet)
+
+;; Set Yasnippet's key binding to shift+tab
+(setq yas-snippet-dirs "~/.emacs.d/snippets")
 (yas-global-mode 1)
+(setq warning-suppress-types '(
+                               (yasnippet backquote-change)
+                               ))
 
 ;;utils
 (defun show-major-mode ()
@@ -103,17 +120,29 @@
 (projectile-discover-projects-in-directory "~/src")
 ;; modes
 (require 'js2-mode)
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-jsx-mode))
+(add-hook 'js2-mode-hook 'ac-js2-mode)
+(setq ac-js2-evaluate-calls t)
+(add-hook 'js2-mode-hook 'js2-refactor-mode)
+;; (setq ac-js2-external-libraries '("full/path/to/a-library.js"))
+
+
+
+  (setq web-mode-markup-indent-offset 2
+        web-mode-css-indent-offset 2
+        web-mode-code-indent-offset 2
+        js-indent-level 2
+        js2-bounce-indent-p t
+        )
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(js-indent-level 2)
- '(js2-bounce-indent-p t)
  '(package-selected-packages
    (quote
-    (auto-yasnippet yasnippet markdown-mode yaml-mode dockerfile-mode js2-mode json-mode json-snatcher json-reformat auto-complete popup flycheck pkg-info epl blank-mode git-gutter evil-magit magit magit-popup git-commit with-editor dash async linum-relative color-theme-solarized evil-leader quelpa))))
+    (auto-yasnippet yasnippet markdown-mode yaml-mode dockerfile-mode js2-mode json-mode json-snatcher json-reformat auto-complete popup flycheck pkg-info epl blank-mode git-gutter evil-magit magit magit-popup git-commit with-editor dash async linum-relative color-theme-solarized evil-leader quelpa)))
+ '(tab-always-indent (quote complete)))
 ;;; init.el ends here
 
 (custom-set-faces

@@ -1,5 +1,5 @@
 name: emacsd
-root: /home/user/src/emacs.d
+root: /home/nonlux/src/emacs.d
 pre: emacs --eval "(setq server-name \"emacsd\")" --daemon || true
 startup_window: editor
 windows:

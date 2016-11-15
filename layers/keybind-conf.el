@@ -27,6 +27,12 @@
   "gst" 'magit-status
 )
 
+(evil-leader/set-key
+  "ysn" 'yas-new-snippet
+  "yst" 'yas-tryout-snippet
+  "ysr" 'yas-reload-all
+)
+
 ;; code
 (defun toogle-comment ()
   "Toggle region or the current comments.
@@ -52,6 +58,7 @@ Source: http://stackoverflow.com/questions/9688748/emacs-comment-uncomment-curre
   "pp" 'projectile-mode
   "pd" 'projectile-dired
   "pf" 'projectile-find-file
+  "pg" 'projectile-ag
 )
 ;; tmux
 (defun prompt-tmx()
@@ -73,11 +80,24 @@ Source: http://stackoverflow.com/questions/9688748/emacs-comment-uncomment-curre
 )
 
 
-(defun gar() "" (interactive) (shell-command "yo prj:ansibleRole"))
-(evil-leader/set-key
-  "gar" 'gar
+(defun ypar()
+  "generate ansible role"
+  (interactive)
+  (let ((x (read-string "Enter role:")))
+    (shell-command (format "yo prj:ansibleRole --role=%s --task=main" x)))
 )
 
+(defun ypyg()
+  "generate yo generator"
+  (interactive)
+  (let ((x (read-string "Enter generator:")))
+    (shell-command (format "yo prj:yoGenerator --generator=%s" x)))
+)
+
+(evil-leader/set-key
+  "ga" 'ypar
+  "gg" 'ypyg
+)
 (defun load-init-config()
   "Reload init"
   (interactive)

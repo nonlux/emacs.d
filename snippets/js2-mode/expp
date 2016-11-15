@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: expp
+# --
+export ${1:name} from './$1/$1';
+$0

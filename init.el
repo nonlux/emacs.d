@@ -151,6 +151,7 @@
         web-mode-code-indent-offset 2
         js-indent-level 2
         js2-bounce-indent-p t
+        js2-basic-offset 2
         )
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

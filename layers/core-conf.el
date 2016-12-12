@@ -21,8 +21,10 @@
 (linum-relative-global-mode 1)
 
 ;; solarized
-(setq frame-background-mode 'dark)
 (load-theme 'solarized t)
+(set-frame-parameter nil 'background-mode 'dark)
+(set-terminal-parameter nil 'background-mode 'dark)
+(enable-theme 'solarized)
 
 ;;; blank mode
 ;(setq blank-space " ")

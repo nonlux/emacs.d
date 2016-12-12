@@ -153,6 +153,8 @@
         js2-bounce-indent-p t
         js2-basic-offset 2
         )
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

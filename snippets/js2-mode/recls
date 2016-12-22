@@ -1,0 +1,31 @@
+# -*- mode: snippet -*-
+# name: recls
+# --
+import React, { Component, PropTypes } from 'react';
+import classnames from 'classnames';
+import './style.css';
+
+export default class ${1:`(file-name-base (buffer-file-name))`} extends Component {
+  static propTypes = {
+    children: PropTypes.node,
+    className: PropTypes.string,
+  }
+
+  getClassName() {
+    return classnames(
+      this.props.className,
+      '',
+    );
+  }
+
+  render() {
+    const {children, className} = this.props;
+    const nextClassName = this.getClassName();
+    $0
+    return (
+      <div>
+        {children}
+      </div>
+    );
+  }
+}

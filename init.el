@@ -118,6 +118,7 @@
 (setq projectile-enable-caching t)
 (setq projectile-completion-system 'grizzl)
 (projectile-discover-projects-in-directory "~/src")
+(projectile-global-mode)
 ;; modes
 (require 'js2-mode)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-jsx-mode))

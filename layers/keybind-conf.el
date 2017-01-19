@@ -55,7 +55,7 @@ Source: http://stackoverflow.com/questions/9688748/emacs-comment-uncomment-curre
 
 ;;projectile
 (evil-leader/set-key
-  "pp" 'projectile-mode
+  "pp" 'projectile-switch-project
   "pd" 'projectile-dired
   "pf" 'projectile-find-file
   "pg" 'projectile-ag

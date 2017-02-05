@@ -66,6 +66,7 @@
     ;; ;; file type
     ;; json-reformat
     ;; json-snatcher
+    ledger-mode
 ))
 
 (defun autoinstall-packages ()
